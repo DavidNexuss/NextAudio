@@ -1,4 +1,4 @@
-#include "../audio.hpp"
+#include <audio.hpp>
 #include "../debug.hpp"
 
 #include <AL/al.h>

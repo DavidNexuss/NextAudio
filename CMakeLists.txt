@@ -19,4 +19,4 @@ file(GLOB_RECURSE SRC src/*.cpp)
 
 add_library(NextAudio ${SRC})
 target_link_libraries(NextAudio PUBLIC stb_vorbis)
-target_include_directories(NextAudio PUBLIC lib src)
+target_include_directories(NextAudio PUBLIC lib src include)
