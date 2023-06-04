@@ -130,7 +130,7 @@ class ALDevice : public IAudioDevice {
 };
 
 
-IAudioDevice* instance() {
+IAudioDevice* device() {
   static IAudioDevice* dev = new ALDevice;
   return dev;
 }

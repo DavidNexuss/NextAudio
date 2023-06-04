@@ -15,8 +15,9 @@ message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 project(NextAudio CXX C)
 
 add_subdirectory(lib/stb_vorbis)
+add_subdirectory(lib/opus_decoder)
 file(GLOB_RECURSE SRC src/*.cpp)
 
 add_library(NextAudio ${SRC})
 target_link_libraries(NextAudio PUBLIC stb_vorbis)
-target_include_directories(NextAudio PUBLIC lib src include)
+target_include_directories(NextAudio PUBLIC lib src include opus_decoder)

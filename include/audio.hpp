@@ -2,6 +2,7 @@
 #include <cstddef>
 #include <cstdint>
 #include <string>
+#include "config.hpp"
 
 namespace NextAudio { 
 struct float3 {
@@ -50,4 +51,6 @@ class IAudioDevice {
 
 IAudioDevice* device();
 IAudioBuffer* loadOGG(const std::string& filePath);
+IAudioBuffer* loadOPUS(const std::string& filePath);
+IAudioBuffer* load(const std::string& filePath);
 }
