@@ -40,7 +40,8 @@ class IAudioSource {
     mDirty = true;
     return desc;
   }
-  virtual void play(IAudioBuffer* buffer)                = 0;
+  virtual void play(IAudioBuffer* buffer = nullptr)      = 0;
+  virtual void pause()                                   = 0;
   virtual bool isPlaying(IAudioBuffer* buffer = nullptr) = 0;
 };
 

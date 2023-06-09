@@ -36,6 +36,9 @@ class ALSource : public IAudioSource {
   ALuint source;
   bool   sourceCreated = false;
 
+  void pause() override { 
+    AL(alSourcePause(source));
+  }
   void play(IAudioBuffer* buffer) override {
     if (sourceCreated == false) {
       AL(alGenSources((ALuint)1, &source));
@@ -51,7 +54,7 @@ class ALSource : public IAudioSource {
       mDirty = false;
     }
 
-    if (mLast != buffer) {
+    if (mLast != buffer && buffer != nullptr) {
       AL(alSourcei(source, AL_BUFFER, static_cast<ALBuffer*>(buffer)->getBuffer()));
       mLast = buffer;
     }

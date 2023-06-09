@@ -24,3 +24,6 @@ target_include_directories(NextAudio PUBLIC lib src include opus_decoder)
 
 add_executable(play tests/play.cpp)
 target_link_libraries(play PUBLIC NextAudio openal)
+
+add_executable(pause tests/pause.cpp)
+target_link_libraries(pause PUBLIC NextAudio openal)
