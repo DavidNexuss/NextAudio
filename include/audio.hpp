@@ -24,6 +24,8 @@ struct AudioSourceDesc {
   float3 Vel   = float3{0, 0, 0};
   float  Pitch = 1;
   float  Gain  = 1;
+  float  HighPassGain = 1.f;
+  float  LowPassGain = 1.f;
   bool   Loop  = false;
 };
 

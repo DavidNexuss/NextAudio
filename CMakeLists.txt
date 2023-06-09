@@ -19,5 +19,8 @@ add_subdirectory(lib/opus_decoder)
 file(GLOB_RECURSE SRC src/*.cpp)
 
 add_library(NextAudio ${SRC})
-target_link_libraries(NextAudio PUBLIC stb_vorbis)
+target_link_libraries(NextAudio PUBLIC stb_vorbis )
 target_include_directories(NextAudio PUBLIC lib src include opus_decoder)
+
+add_executable(play tests/play.cpp)
+target_link_libraries(play PUBLIC NextAudio openal)

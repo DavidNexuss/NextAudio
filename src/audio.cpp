@@ -5,6 +5,9 @@
 #include <fstream>
 #include <sstream>
 
+#define SUPPORT_OGG
+//#define SUPPORT_OPUS
+
 NextAudio::IAudioBuffer* NextAudio::loadOGG(const std::string& filePath) {
   int    channels;
   int    sampleRate;
@@ -25,6 +28,7 @@ NextAudio::IAudioBuffer* NextAudio::loadOGG(const std::string& filePath) {
   return res;
 }
 
+#ifdef SUPPORT_OPUS
 #include "../lib/opus_decoder/COpusCodec.hpp"
 NextAudio::IAudioBuffer* NextAudio::loadOPUS(const std::string& filePath) { 
   COpusCodec codec(48000, 2);
@@ -50,8 +54,14 @@ NextAudio::IAudioBuffer* NextAudio::loadOPUS(const std::string& filePath) {
   desc.bitsPerSample = 16;
   LOG("Decoded audio %s, with %d %d %d\n", filePath.c_str(), desc.channels, desc.sampleRate, desc.size);
   return NextAudio::device()->createBuffer(desc);
-
 }
+#else
+
+NextAudio::IAudioBuffer* NextAudio::loadOPUS(const std::string& filePath) { 
+  dprintf(2, "[AL] Opus not supported");
+  return nullptr;
+}
+#endif
 
 static bool hasExtension(const std::string& name, const std::string& ext) { return name.find(ext) != std::string::npos; }
 NextAudio::IAudioBuffer* NextAudio::load(const std::string &filePath) { 
