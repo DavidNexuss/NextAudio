@@ -15,6 +15,7 @@ NextAudio::IAudioBuffer* NextAudio::loadOGG(const std::string& filePath) {
   short* output;
 
   count = stb_vorbis_decode_filename(filePath.c_str(), &channels, &sampleRate, &output);
+  if(count < 0) return 0;
 
   AudioBufferDesc desc;
   desc.channels      = channels;
